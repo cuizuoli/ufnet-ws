@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.springframework.boot: INFO
+    com.ufnet.ws: DEBUG
+    org.apache.commons: WARN
+    org.apache.ibatis: WARN
+    java.sql: DEBUG
+    java.sql.Statement: INFO
+    java.sql.ResultSet: INFO
+
+spring:
+  application:
+    name: ufnet-ws
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@124.67.20.216:1521:orcl
+    username: bill
+    password: bill
+    max-wait: 5
+    max-active: 5
+    max-idle: 5
+    min-idle: 2
+    validation-query: SELECT 1 FROM DUAL
+    test-on-borrow: true
+    test-on-return: false
+    test-while-idle: true
+    time-between-eviction-runs-millis: 6000
+
+mybatis:
+  mapperLocations: classpath:mapper/UserInfo*.xml
+  typeAliasesPackage: com.ufnet.ws.model
+  typeHandlersPackage: com.ufnet.ws.typehandler
+
+---
+spring:
+  profiles: release
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: bill
+    password: bill
+    max-wait: 10000
+    max-active: 30
+    max-idle: 10
+    min-idle: 5
+    validation-query: SELECT 1 FROM DUAL
+    test-on-borrow: true
+    test-on-return: false
+    test-while-idle: true
+    time-between-eviction-runs-millis: 60000
