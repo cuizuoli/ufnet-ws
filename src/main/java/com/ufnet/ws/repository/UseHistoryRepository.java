@@ -7,6 +7,7 @@
 
 package com.ufnet.ws.repository;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -14,7 +15,7 @@ import org.apache.ibatis.annotations.Param;
  * @author cuizuoli
  * @date 2016年5月17日
  */
-//@Mapper
+@Mapper
 public interface UseHistoryRepository {
 	/**
 	 * select
@@ -22,5 +23,7 @@ public interface UseHistoryRepository {
 	 * @param onlineTime
 	 * @return
 	 */
-	String select(@Param("ipAddress") String ipAddress, @Param("onlineTime") String onlineTime);
+	String select(
+			@Param("ipAddress") String ipAddress,
+			@Param("onlineTime") String onlineTime);
 }

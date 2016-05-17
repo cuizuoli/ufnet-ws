@@ -7,12 +7,15 @@
 
 package com.ufnet.ws.repository;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
 /**
  * Repository for onlineusertbl.
  * @author cuizuoli
  * @date 2016年5月17日
  */
-//@Mapper
+@Mapper
 public interface OnlineUserRepository {
 	/**
 	 * select login name.
@@ -20,4 +23,16 @@ public interface OnlineUserRepository {
 	 * @return
 	 */
 	String select(String userIp);
+
+	/**
+	 * update
+	 * @param loginName
+	 * @param ipAddress
+	 * @param macAddress
+	 * @return
+	 */
+	int update(
+			@Param("loginName") String loginName,
+			@Param("ipAddress") String ipAddress,
+			@Param("macAddress") String macAddress);
 }
