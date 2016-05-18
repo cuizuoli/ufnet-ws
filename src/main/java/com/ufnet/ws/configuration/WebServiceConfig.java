@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
@@ -60,9 +61,18 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	}
 
 	@Bean
-	public WebServiceTemplate webServiceTemplate(SoapMessageFactory messageFactory) {
+	public Jaxb2Marshaller marshaller() {
+		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+		marshaller.setPackagesToScan("com.ufnet.ws.server.model");
+		return marshaller;
+	}
+
+	@Bean
+	public WebServiceTemplate webServiceTemplate(SoapMessageFactory messageFactory, Jaxb2Marshaller marshaller) {
 		WebServiceTemplate webServiceTemplate = new WebServiceTemplate(messageFactory);
-		webServiceTemplate.setDefaultUri("http://localhost:8080/services/CardCharge");
+		webServiceTemplate.setDefaultUri("http://124.67.20.216:8080/services/CardCharge");
+		webServiceTemplate.setMarshaller(marshaller);
+		webServiceTemplate.setUnmarshaller(marshaller);
 		return webServiceTemplate;
 	}
 

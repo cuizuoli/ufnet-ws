@@ -1,6 +1,10 @@
 server:
   port: 8080
 
+ufnet:
+  sync:
+    uri: http://124.67.20.216:8080/services/CardCharge
+
 logging:
   level:
     root: INFO
