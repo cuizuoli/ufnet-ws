@@ -18,5 +18,5 @@ import lombok.Data;
 @Data
 public class GroupMap {
 	private int groupId;
-	private int accounttypeId;
+	private int accountTypeId;
 }

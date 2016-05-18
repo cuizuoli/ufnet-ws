@@ -9,6 +9,7 @@ package com.ufnet.ws.repository;
 
 import javax.annotation.Resource;
 
+import org.joda.time.DateTime;
 import org.junit.Test;
 
 import com.ufnet.ws.AbstractTest;
@@ -25,7 +26,7 @@ public class UseHistoryRepositoryTest extends AbstractTest {
 
 	@Test
 	public void select() {
-		useHistoryRepository.select("0", "100000");
+		useHistoryRepository.select("0", DateTime.now());
 	}
 
 }

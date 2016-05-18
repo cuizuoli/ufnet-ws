@@ -7,8 +7,6 @@
 
 package com.ufnet.ws.repository;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ufnet.ws.model.PredictAccountType;
@@ -21,15 +19,15 @@ import com.ufnet.ws.model.PredictAccountType;
 @Mapper
 public interface PredictAccountTypeRepository {
 	/**
-	 * selectList
+	 * select
 	 * @param loginName
 	 * @return
 	 */
-	List<PredictAccountType> selectList(String loginName);
+	PredictAccountType select(String loginName);
 
 	/**
 	 * update
 	 * @param predictAccountType
 	 */
-	void update(PredictAccountType predictAccountType);
+	int update(PredictAccountType predictAccountType);
 }

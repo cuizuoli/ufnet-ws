@@ -9,6 +9,7 @@ package com.ufnet.ws.repository;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.joda.time.DateTime;
 
 /**
  * Repository for use_history.
@@ -25,5 +26,5 @@ public interface UseHistoryRepository {
 	 */
 	String select(
 			@Param("ipAddress") String ipAddress,
-			@Param("onlineTime") String onlineTime);
+			@Param("onlineTime") DateTime onlineTime);
 }

@@ -19,9 +19,16 @@ import com.ufnet.ws.model.GroupMap;
 @Mapper
 public interface GroupMapRepository {
 	/**
-	 * select
-	 * @param groupMap
+	 * selectByGroupId
+	 * @param groupId
 	 * @return
 	 */
-	GroupMap select(GroupMap groupMap);
+	GroupMap selectByGroupId(int groupId);
+
+	/**
+	 * selectByAccountTypeId
+	 * @param accountTypeId
+	 * @return
+	 */
+	GroupMap selectByAccountTypeId(int accountTypeId);
 }

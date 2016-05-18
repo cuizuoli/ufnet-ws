@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ufnet.ws.repository.GroupMapRepository">
-	<select id="select" resultType="GroupMap">
+	<select id="selectByGroupId" resultType="GroupMap">
 		SELECT
 			group_id AS groupId,
-			accounttype_id AS accounttypeId
+			accounttype_id AS accountTypeId
 		FROM group_map
-		<where>
-			<if test="groupId != null and groupId != ''">
-				group_id = #{groupId}
-			</if>
-			<if test="accounttypeId != null and accounttypeId != ''">
-				AND accounttype_id = #{accounttypeId}
-			</if>
-		</where>
+		WHERE group_id = #{groupId}
+	</select>
+	<select id="selectByAccountTypeId" resultType="GroupMap">
+		SELECT
+			group_id AS groupId,
+			accounttype_id AS accountTypeId
+		FROM group_map
+		WHERE accounttype_id = #{accountTypeId}
 	</select>
 </mapper>

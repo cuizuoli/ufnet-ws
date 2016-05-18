@@ -7,8 +7,6 @@
 
 package com.ufnet.ws.repository;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.joda.time.DateTime;
@@ -32,8 +30,8 @@ public class PredictAccountTypeRepositoryTest extends AbstractTest {
 
 	@Test
 	public void selectList() {
-		List<PredictAccountType> predictAccountTypeList = predictAccountTypeRepository.selectList("test");
-		log.debug(predictAccountTypeList.toString());
+		PredictAccountType predictAccountType = predictAccountTypeRepository.select("test");
+		log.debug(predictAccountType != null ? predictAccountType.toString() : "");
 	}
 
 	@Test

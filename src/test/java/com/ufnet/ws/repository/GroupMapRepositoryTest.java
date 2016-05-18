@@ -28,15 +28,15 @@ public class GroupMapRepositoryTest extends AbstractTest {
 	private GroupMapRepository groupMapRepository;
 
 	@Test
-	public void select() {
-		GroupMap groupMap = new GroupMap();
-		groupMap.setGroupId(12);
-		GroupMap groupMap1 = groupMapRepository.select(groupMap);
-		log.debug(groupMap1 != null ? groupMap1.toString() : "");
-		groupMap = new GroupMap();
-		groupMap.setAccounttypeId(1);
-		GroupMap groupMap2 = groupMapRepository.select(groupMap);
-		log.debug(groupMap2 != null ? groupMap2.toString() : "");
+	public void selectByGroupId() {
+		GroupMap groupMap = groupMapRepository.selectByGroupId(12);
+		log.debug(groupMap != null ? groupMap.toString() : "");
+	}
+
+	@Test
+	public void selectByAccountTypeId() {
+		GroupMap groupMap = groupMapRepository.selectByAccountTypeId(1);
+		log.debug(groupMap != null ? groupMap.toString() : "");
 	}
 
 }

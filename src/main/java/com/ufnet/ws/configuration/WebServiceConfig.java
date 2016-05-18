@@ -12,8 +12,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
+import org.springframework.ws.soap.SoapMessageFactory;
+import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
@@ -49,6 +52,18 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	@Bean(name = "CardCharge")
 	public SimpleWsdl11Definition SimpleWsdl11Definition() {
 		return new SimpleWsdl11Definition(new ClassPathResource("/wsdl/CardCharge.wsdl"));
+	}
+
+	@Bean
+	public SaajSoapMessageFactory messageFactory() {
+		return new SaajSoapMessageFactory();
+	}
+
+	@Bean
+	public WebServiceTemplate webServiceTemplate(SoapMessageFactory messageFactory) {
+		WebServiceTemplate webServiceTemplate = new WebServiceTemplate(messageFactory);
+		webServiceTemplate.setDefaultUri("http://localhost:8080/services/CardCharge");
+		return webServiceTemplate;
 	}
 
 }
