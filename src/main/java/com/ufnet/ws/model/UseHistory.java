@@ -7,7 +7,7 @@
 
 package com.ufnet.ws.model;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import lombok.Data;
 
@@ -20,5 +20,5 @@ import lombok.Data;
 @Data
 public class UseHistory {
 	private String ipAddress;
-	private Date onlineTime;
+	private DateTime onlineTime;
 }

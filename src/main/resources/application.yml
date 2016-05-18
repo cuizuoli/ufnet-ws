@@ -34,7 +34,7 @@ spring:
     time-between-eviction-runs-millis: 6000
 
 mybatis:
-  mapperLocations: classpath:mapper/UserInfo*.xml
+  mapperLocations: classpath:mapper/*Repository.xml
   typeAliasesPackage: com.ufnet.ws.model
   typeHandlersPackage: com.ufnet.ws.typehandler
 

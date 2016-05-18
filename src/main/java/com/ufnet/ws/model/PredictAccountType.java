@@ -7,7 +7,7 @@
 
 package com.ufnet.ws.model;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import lombok.Data;
 
@@ -24,5 +24,5 @@ public class PredictAccountType {
 	private String originTypeName;
 	private int targetTypeId;
 	private String targetTypeName;
-	private Date implementDate;
+	private DateTime implementDate;
 }

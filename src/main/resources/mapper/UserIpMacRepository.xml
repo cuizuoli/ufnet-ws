@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ufnet.ws.repository.UserIpMacRepository">
+	<insert id="insert">
+		INSERT INTO user_ip_mac (
+			ip_mac_id,
+			account_id,
+			ip_address,
+			mac,
+			gateway_net_range_id,
+			gateway_id,
+			protect_ip
+		) VALUES (
+			ipmacid_seq.nextval,
+			#{accountId},
+			#{ipAddress},
+			#{mac},
+			0,
+			#{gatewayId},
+			0
+		)
+	</insert>
+	<delete id="delete">
+		DELETE FROM user_ip_mac
+		WHERE account_id = #{accountId}
+	</delete>
+</mapper>

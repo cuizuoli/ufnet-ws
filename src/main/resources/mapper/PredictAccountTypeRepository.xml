@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ufnet.ws.repository.PredictAccountTypeRepository">
+	<select id="selectList" resultType="PredictAccountType">
+		SELECT
+			oa.id AS originTypeId,
+			oa.type_name AS originTypeName,
+			ta.id AS targetTypeId,
+			ta.type_name AS targetTypeName
+		FROM predict_account_type pa
+		INNER JOIN user_info u
+		ON u.account_id = pa.account_id
+		AND u.login_name = #{loginName}
+		INNER JOIN account_type oa
+		ON oa.id = pa.origin_account_type_id
+		INNER JOIN account_type ta
+		ON ta.id = pa.target_account_type_id
+	</select>
+	<update id="update">
+		UPDATE predict_account_type
+		SET target_account_type_id = #{targetTypeId},
+			implement_date = #{implementDate}
+		WHERE account_id = (SELECT account_id FROM user_info WHERE login_name = #{loginName})
+	</update>
+</mapper>
