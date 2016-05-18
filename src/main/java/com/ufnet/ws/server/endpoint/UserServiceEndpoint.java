@@ -9,6 +9,9 @@ package com.ufnet.ws.server.endpoint;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -52,6 +55,12 @@ import com.ufnet.ws.service.UserService;
 @Endpoint
 public class UserServiceEndpoint {
 
+	@Value("${ufnet.sync.uri}")
+	private String syncUri;
+
+	@Resource
+	private WebServiceTemplate webServiceTemplate;
+
 	@Resource
 	private UserService userService;
 
@@ -61,6 +70,9 @@ public class UserServiceEndpoint {
 		int returnCode = userService.cardNewUser(request);
 		CardNewUserResponse response = new CardNewUserResponse();
 		response.setReturnCode(returnCode);
+		if (StringUtils.isNotEmpty(syncUri)) {
+			webServiceTemplate.marshalSendAndReceive(syncUri, request);
+		}
 		return response;
 	}
 

@@ -10,7 +10,6 @@ package com.ufnet.ws.client;
 import javax.annotation.Resource;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import com.ufnet.ws.AbstractTest;
@@ -24,16 +23,13 @@ import com.ufnet.ws.server.model.CardNewUserResponse;
  */
 public class WebServiceTemplateTest extends AbstractTest {
 
-	@Value("${ufnet.sync.uri}")
-	private String syncUri;
-
 	@Resource
 	private WebServiceTemplate webServiceTemplate;
 
 	@Test
 	public void cardNewUser() {
 		CardNewUserRequest request = new CardNewUserRequest();
-		request.setUserId("test");
+		request.setUserId("test1234");
 		request.setGroupId(12);
 		request.setTeamId(11);
 		request.setPwd("654123");
@@ -45,7 +41,7 @@ public class WebServiceTemplateTest extends AbstractTest {
 		request.setOpenDate("2016-01-01");
 		request.setNotes("务注Comment");
 		request.setCertNum("210112198011");
-		CardNewUserResponse response = (CardNewUserResponse)webServiceTemplate.marshalSendAndReceive(syncUri, request);
+		CardNewUserResponse response = (CardNewUserResponse)webServiceTemplate.marshalSendAndReceive("http://localhost:8080/services/CardCharge", request);
 		System.out.println(response.getReturnCode());
 	}
 
