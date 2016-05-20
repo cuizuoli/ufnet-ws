@@ -12,12 +12,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.ufnet.ws.SimpleConstants;
 
+import lombok.ToString;
+
 /**
  * ufnet-ws
  * com.ufnet.ws.server.model.GetUserPassWordRequest.java
  * @author st13902
  * @date 2013-5-16
  */
+@ToString
 @XmlRootElement(name = "getUserPassWord", namespace = SimpleConstants.NAMESPACE)
 public class GetUserPassWordRequest {
 	private String userId;

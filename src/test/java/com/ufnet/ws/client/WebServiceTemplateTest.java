@@ -13,6 +13,8 @@ import org.junit.Test;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import com.ufnet.ws.AbstractTest;
+import com.ufnet.ws.server.model.CardDelUserRequest;
+import com.ufnet.ws.server.model.CardDelUserResponse;
 import com.ufnet.ws.server.model.CardNewUserRequest;
 import com.ufnet.ws.server.model.CardNewUserResponse;
 
@@ -29,7 +31,7 @@ public class WebServiceTemplateTest extends AbstractTest {
 	@Test
 	public void cardNewUser() {
 		CardNewUserRequest request = new CardNewUserRequest();
-		request.setUserId("test1234");
+		request.setUserId("testcuizuoli");
 		request.setGroupId(12);
 		request.setTeamId(11);
 		request.setPwd("654123");
@@ -42,6 +44,14 @@ public class WebServiceTemplateTest extends AbstractTest {
 		request.setNotes("务注Comment");
 		request.setCertNum("210112198011");
 		CardNewUserResponse response = (CardNewUserResponse)webServiceTemplate.marshalSendAndReceive("http://localhost:8080/services/CardCharge", request);
+		System.out.println(response.getReturnCode());
+	}
+
+	@Test
+	public void cardDelUser() {
+		CardDelUserRequest request = new CardDelUserRequest();
+		request.setUserId("testcuizuoli");
+		CardDelUserResponse response = (CardDelUserResponse)webServiceTemplate.marshalSendAndReceive("http://localhost:8080/services/CardCharge", request);
 		System.out.println(response.getReturnCode());
 	}
 

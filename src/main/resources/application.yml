@@ -40,7 +40,7 @@ mybatis:
 
 ufnet:
   sync:
-    uri: http://124.67.20.216:8080/services/CardCharge
+    uri: 
 
 ---
 spring:
@@ -59,7 +59,3 @@ spring:
     test-on-return: false
     test-while-idle: true
     time-between-eviction-runs-millis: 60000
-
-ufnet:
-  sync:
-    uri: 

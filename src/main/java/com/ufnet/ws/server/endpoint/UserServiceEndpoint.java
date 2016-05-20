@@ -9,9 +9,6 @@ package com.ufnet.ws.server.endpoint;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -44,6 +41,7 @@ import com.ufnet.ws.server.model.OffLineUserRequest;
 import com.ufnet.ws.server.model.OffLineUserResponse;
 import com.ufnet.ws.server.model.ResumeUserInfoRequest;
 import com.ufnet.ws.server.model.ResumeUserInfoResponse;
+import com.ufnet.ws.service.SyncService;
 import com.ufnet.ws.service.UserService;
 
 /**
@@ -55,14 +53,11 @@ import com.ufnet.ws.service.UserService;
 @Endpoint
 public class UserServiceEndpoint {
 
-	@Value("${ufnet.sync.uri}")
-	private String syncUri;
-
-	@Resource
-	private WebServiceTemplate webServiceTemplate;
-
 	@Resource
 	private UserService userService;
+
+	@Resource
+	private SyncService syncService;
 
 	@PayloadRoot(localPart = "CardNewUser", namespace = SimpleConstants.NAMESPACE)
 	@ResponsePayload
@@ -70,9 +65,7 @@ public class UserServiceEndpoint {
 		int returnCode = userService.cardNewUser(request);
 		CardNewUserResponse response = new CardNewUserResponse();
 		response.setReturnCode(returnCode);
-		if (StringUtils.isNotEmpty(syncUri)) {
-			webServiceTemplate.marshalSendAndReceive(syncUri, request);
-		}
+		syncService.sync(request);
 		return response;
 	}
 
@@ -82,6 +75,7 @@ public class UserServiceEndpoint {
 		int returnCode = userService.cardDelUser(request);
 		CardDelUserResponse response = new CardDelUserResponse();
 		response.setReturnCode(returnCode);
+		syncService.sync(request);
 		return response;
 	}
 
@@ -91,6 +85,7 @@ public class UserServiceEndpoint {
 		int returnCode = userService.cardChangePWD(request);
 		CardChangePWDResponse response = new CardChangePWDResponse();
 		response.setReturnCode(returnCode);
+		syncService.sync(request);
 		return response;
 	}
 
@@ -127,6 +122,7 @@ public class UserServiceEndpoint {
 		int returnCode = userService.modifyUserInfo(request);
 		ModifyUserInfoResponse response = new ModifyUserInfoResponse();
 		response.setReturnCode(returnCode);
+		syncService.sync(request);
 		return response;
 	}
 
@@ -145,6 +141,7 @@ public class UserServiceEndpoint {
 		int returnCode = userService.resumeUserInfo(request);
 		ResumeUserInfoResponse response = new ResumeUserInfoResponse();
 		response.setReturnCode(returnCode);
+		syncService.sync(request);
 		return response;
 	}
 
@@ -154,6 +151,7 @@ public class UserServiceEndpoint {
 		int returnCode = userService.offLineUser(request);
 		OffLineUserResponse response = new OffLineUserResponse();
 		response.setReturnCode(returnCode);
+		syncService.sync(request);
 		return response;
 	}
 
@@ -181,6 +179,7 @@ public class UserServiceEndpoint {
 		boolean returnCode = userService.modifyPrePolicy(request);
 		ModifyPrePolicyResponse response = new ModifyPrePolicyResponse();
 		response.setReturnCode(returnCode);
+		syncService.sync(request);
 		return response;
 	}
 

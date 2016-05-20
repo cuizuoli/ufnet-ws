@@ -12,12 +12,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.ufnet.ws.SimpleConstants;
 
+import lombok.ToString;
+
 /**
  * ufnet-ws
  * com.ufnet.ws.server.model.ModifyPrePolicyRequest.java
  * @author st13902
  * @date 2013-5-17
  */
+@ToString
 @XmlRootElement(name = "modifyPrePolicy", namespace = SimpleConstants.NAMESPACE)
 public class ModifyPrePolicyRequest {
 	private String userId;

@@ -12,12 +12,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.ufnet.ws.SimpleConstants;
 
+import lombok.ToString;
+
 /**
  * ufnet-ws
  * com.ufnet.ws.server.model.GetUserLimitEndDateRequest.java
  * @author st13902
  * @date 2013-5-16
  */
+@ToString
 @XmlRootElement(name = "getUserLimitEndDate", namespace = SimpleConstants.NAMESPACE)
 public class GetUserLimitEndDateRequest {
 	private String userId;

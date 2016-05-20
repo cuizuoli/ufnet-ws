@@ -193,6 +193,10 @@ public class UserService {
 			int authTypeId = accountType.getTypeId();
 			int bandwidth = accountType.getMaxBand();
 			DateTime dateOfEnd = JodaDateUtil.parseDate(limitDateEnd);
+			if (dateOfEnd == null) {
+				log.error("limitdate_end[" + limitDateEnd + "] invalid.");
+				return 0;
+			}
 			DateTime dateOfKaitong = JodaDateUtil.parseDate(openDate);
 			DateTime lastLoginTime = date;
 			DateTime birthday = date;
@@ -489,10 +493,18 @@ public class UserService {
 			DateTime dateOfEnd = null;
 			if (StringUtils.isNotEmpty(limitDateEnd)) {
 				dateOfEnd = JodaDateUtil.parseDate(limitDateEnd);
+				if (dateOfEnd == null) {
+					log.error("limitdate_end[" + limitDateEnd + "] invalid.");
+					return 0;
+				}
 			}
 			DateTime dateOfKaitong = null;
 			if (StringUtils.isNotEmpty(openDate)) {
 				dateOfKaitong = JodaDateUtil.parseDate(openDate);
+				if (dateOfKaitong == null) {
+					log.error("opendate[" + openDate + "] invalid.");
+					return 0;
+				}
 			}
 			int adminId = teamId;
 			int openAdmin = teamId;
@@ -708,6 +720,11 @@ public class UserService {
 		String prDate = request.getPrDate();
 		if (StringUtils.isBlank(prDate)) {
 			log.error("prDate[" + prDate + "] is blank.");
+			return false;
+		}
+		DateTime prDateTime = JodaDateUtil.parseDate(prDate);
+		if (prDateTime == null) {
+			log.error("prDate[" + prDate + "] invalid.");
 			return false;
 		}
 		try {

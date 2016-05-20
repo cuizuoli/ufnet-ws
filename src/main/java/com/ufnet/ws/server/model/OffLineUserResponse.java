@@ -10,12 +10,15 @@ package com.ufnet.ws.server.model;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import lombok.ToString;
+
 /**
  * ufnet-ws
  * com.ufnet.ws.server.model.OffLineUserResponse.java
  * @author st13902
  * @date 2013-5-17
  */
+@ToString
 @XmlRootElement(name = "offLineUserResponse")
 public class OffLineUserResponse {
 	private int returnCode;
