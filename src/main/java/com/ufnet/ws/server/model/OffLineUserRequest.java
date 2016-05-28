@@ -26,6 +26,7 @@ public class OffLineUserRequest {
 	private String userIp;
 	private String userMac;
 	private String userId;
+	private String appName;
 
 	@XmlElement(name = "userip")
 	public String getUserIp() {
@@ -52,5 +53,14 @@ public class OffLineUserRequest {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	@XmlElement(name = "appName")
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
 	}
 }

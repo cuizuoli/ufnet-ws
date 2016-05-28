@@ -26,6 +26,7 @@ public class ModifyPrePolicyRequest {
 	private String userId;
 	private int userGroupId;
 	private String prDate;
+	private String appName;
 
 	@XmlElement(name = "userID")
 	public String getUserId() {
@@ -52,5 +53,14 @@ public class ModifyPrePolicyRequest {
 
 	public void setPrDate(String prDate) {
 		this.prDate = prDate;
+	}
+
+	@XmlElement(name = "appName")
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
 	}
 }
