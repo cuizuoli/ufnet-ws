@@ -24,6 +24,7 @@ import lombok.ToString;
 @XmlRootElement(name = "ResumeUserInfo", namespace = SimpleConstants.NAMESPACE)
 public class ResumeUserInfoRequest {
 	private String userId;
+	private String appName;
 
 	@XmlElement(name = "userid")
 	public String getUserId() {
@@ -32,5 +33,14 @@ public class ResumeUserInfoRequest {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	@XmlElement(name = "appName")
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
 	}
 }

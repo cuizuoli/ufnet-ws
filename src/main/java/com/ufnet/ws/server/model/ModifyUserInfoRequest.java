@@ -36,6 +36,7 @@ public class ModifyUserInfoRequest {
 	private String notes;
 	private float remainFee;
 	private String certNum;
+	private String appName;
 
 	@XmlElement(name = "userid")
 	public String getUserId() {
@@ -152,5 +153,14 @@ public class ModifyUserInfoRequest {
 
 	public void setCertNum(String certNum) {
 		this.certNum = certNum;
+	}
+
+	@XmlElement(name = "appName")
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
 	}
 }

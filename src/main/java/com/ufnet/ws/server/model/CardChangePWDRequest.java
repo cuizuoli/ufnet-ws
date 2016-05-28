@@ -25,6 +25,7 @@ import lombok.ToString;
 public class CardChangePWDRequest {
 	private String userId;
 	private String destPwd;
+	private String appName;
 
 	@XmlElement(name = "userid")
 	public String getUserId() {
@@ -42,5 +43,14 @@ public class CardChangePWDRequest {
 
 	public void setDestPwd(String destPwd) {
 		this.destPwd = destPwd;
+	}
+
+	@XmlElement(name = "appName")
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
 	}
 }
