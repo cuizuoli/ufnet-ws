@@ -70,10 +70,14 @@ public class UserServiceEndpoint {
 		int returnCode = userService.cardNewUser(request);
 		CardNewUserResponse response = new CardNewUserResponse();
 		response.setReturnCode(returnCode);
+<<<<<<< HEAD
 		if (StringUtils.isEmpty(request.getAppName())) {
 			request.setAppName(appName);
 			syncService.sync(request);
 		} else if (!StringUtils.equals(request.getAppName(), appName)) {
+=======
+		if (!StringUtils.equals(request.getAppName(), appName)) {
+>>>>>>> branch 'master' of git@github.com:cuizuoli/ufnet-ws.git
 			syncService.sync(request);
 		}
 		return response;
@@ -85,10 +89,14 @@ public class UserServiceEndpoint {
 		int returnCode = userService.cardDelUser(request);
 		CardDelUserResponse response = new CardDelUserResponse();
 		response.setReturnCode(returnCode);
+<<<<<<< HEAD
 		if (StringUtils.isEmpty(request.getAppName())) {
 			request.setAppName(appName);
 			syncService.sync(request);
 		} else if (!StringUtils.equals(request.getAppName(), appName)) {
+=======
+		if (!StringUtils.equals(request.getAppName(), appName)) {
+>>>>>>> branch 'master' of git@github.com:cuizuoli/ufnet-ws.git
 			syncService.sync(request);
 		}
 		return response;
@@ -100,10 +108,14 @@ public class UserServiceEndpoint {
 		int returnCode = userService.cardChangePWD(request);
 		CardChangePWDResponse response = new CardChangePWDResponse();
 		response.setReturnCode(returnCode);
+<<<<<<< HEAD
 		if (StringUtils.isEmpty(request.getAppName())) {
 			request.setAppName(appName);
 			syncService.sync(request);
 		} else if (!StringUtils.equals(request.getAppName(), appName)) {
+=======
+		if (!StringUtils.equals(request.getAppName(), appName)) {
+>>>>>>> branch 'master' of git@github.com:cuizuoli/ufnet-ws.git
 			syncService.sync(request);
 		}
 		return response;
@@ -142,10 +154,14 @@ public class UserServiceEndpoint {
 		int returnCode = userService.modifyUserInfo(request);
 		ModifyUserInfoResponse response = new ModifyUserInfoResponse();
 		response.setReturnCode(returnCode);
+<<<<<<< HEAD
 		if (StringUtils.isEmpty(request.getAppName())) {
 			request.setAppName(appName);
 			syncService.sync(request);
 		} else if (!StringUtils.equals(request.getAppName(), appName)) {
+=======
+		if (!StringUtils.equals(request.getAppName(), appName)) {
+>>>>>>> branch 'master' of git@github.com:cuizuoli/ufnet-ws.git
 			syncService.sync(request);
 		}
 		return response;
@@ -166,10 +182,14 @@ public class UserServiceEndpoint {
 		int returnCode = userService.resumeUserInfo(request);
 		ResumeUserInfoResponse response = new ResumeUserInfoResponse();
 		response.setReturnCode(returnCode);
+<<<<<<< HEAD
 		if (StringUtils.isEmpty(request.getAppName())) {
 			request.setAppName(appName);
 			syncService.sync(request);
 		} else if (!StringUtils.equals(request.getAppName(), appName)) {
+=======
+		if (!StringUtils.equals(request.getAppName(), appName)) {
+>>>>>>> branch 'master' of git@github.com:cuizuoli/ufnet-ws.git
 			syncService.sync(request);
 		}
 		return response;
@@ -181,10 +201,14 @@ public class UserServiceEndpoint {
 		int returnCode = userService.offLineUser(request);
 		OffLineUserResponse response = new OffLineUserResponse();
 		response.setReturnCode(returnCode);
+<<<<<<< HEAD
 		if (StringUtils.isEmpty(request.getAppName())) {
 			request.setAppName(appName);
 			syncService.sync(request);
 		} else if (!StringUtils.equals(request.getAppName(), appName)) {
+=======
+		if (!StringUtils.equals(request.getAppName(), appName)) {
+>>>>>>> branch 'master' of git@github.com:cuizuoli/ufnet-ws.git
 			syncService.sync(request);
 		}
 		return response;
@@ -214,10 +238,14 @@ public class UserServiceEndpoint {
 		boolean returnCode = userService.modifyPrePolicy(request);
 		ModifyPrePolicyResponse response = new ModifyPrePolicyResponse();
 		response.setReturnCode(returnCode);
+<<<<<<< HEAD
 		if (StringUtils.isEmpty(request.getAppName())) {
 			request.setAppName(appName);
 			syncService.sync(request);
 		} else if (!StringUtils.equals(request.getAppName(), appName)) {
+=======
+		if (!StringUtils.equals(request.getAppName(), appName)) {
+>>>>>>> branch 'master' of git@github.com:cuizuoli/ufnet-ws.git
 			syncService.sync(request);
 		}
 		return response;
