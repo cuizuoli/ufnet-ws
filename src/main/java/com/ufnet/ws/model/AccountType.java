@@ -20,6 +20,8 @@ public class AccountType {
 	private int id;
 	private int typeId;
 	private int payType;
+	private int authStyle;
 	private int maxBand;
 	private int pauseRuleId;
+	private int onlineUserCount;
 }
