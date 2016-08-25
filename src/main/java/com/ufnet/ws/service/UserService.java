@@ -142,6 +142,7 @@ public class UserService {
 		if (StringUtils.isBlank(userName)) {
 			userName = userId;
 		}
+		int communityId = teamId == 0 ? 1 : teamId;
 		String phone = request.getPhone();
 		//		String address = request.getAddress();
 		String limitDateEnd = request.getLimitDateEnd();
@@ -190,8 +191,9 @@ public class UserService {
 				log.error("accounttype_id[" + accountTypeId + "] invalid.");
 				return 0;
 			}
-			int authTypeId = accountType.getTypeId();
+			int authTypeId = accountType.getAuthStyle();
 			int bandwidth = accountType.getMaxBand();
+			int maxOnlineUsers = accountType.getOnlineUserCount();
 			DateTime dateOfEnd = JodaDateUtil.parseDate(limitDateEnd);
 			if (dateOfEnd == null) {
 				log.error("limitdate_end[" + limitDateEnd + "] invalid.");
@@ -204,13 +206,12 @@ public class UserService {
 			DateTime dateOfOpen = date;
 			DateTime dateOfSignContract = date;
 			DateTime dateOfEndContract = date;
-			int adminId = teamId;
-			int openAdmin = teamId;
 			String remark = notes;
 			String certificateNo = certNum;
 
 			// UserInfo
 			UserInfo userInfo = new UserInfo();
+			userInfo.setCommunityId(communityId);
 			userInfo.setAccountId(accountId);
 			userInfo.setUserName(userName);
 			userInfo.setLoginName(loginName);
@@ -222,6 +223,7 @@ public class UserService {
 			userInfo.setCurrentState(currentState);
 			userInfo.setDateOfKaitong(dateOfKaitong);
 			userInfo.setLastLoginTime(lastLoginTime);
+			userInfo.setMaxOnlineUsers(maxOnlineUsers);
 			userInfo.setBirthday(birthday);
 			userInfo.setPhone(phone);
 			userInfo.setCertificateNo(certificateNo);
@@ -229,10 +231,8 @@ public class UserService {
 			userInfo.setDateOfOpen(dateOfOpen);
 			userInfo.setDateOfSignContract(dateOfSignContract);
 			userInfo.setDateOfEndContract(dateOfEndContract);
-			userInfo.setAdminId(adminId);
 			userInfo.setPayAccountId(payAccountId);
 			userInfo.setRemark(remark);
-			userInfo.setOpenAdmin(openAdmin);
 			userInfoRepository.insert(userInfo);
 
 			// insert user_ip_mac

@@ -108,7 +108,7 @@ public class UserInfo {
 	private int switchPort = 0;
 	// 业务员
 	private String sales = "WSDL";
-	private int adminId;
+	private int adminId = 0;
 	// 楼号
 	private String buildingNo = "";
 	// 不安装原因 1 - 没有布线 2 - 暂不安装 3 - 不安装 4 - 信息错误 5 - 其他原因
@@ -123,6 +123,6 @@ public class UserInfo {
 	private int denyAgent = 1;
 	// 1 - web 2 - client 3 - web + client
 	private int loginType = 3;
-	private int openAdmin;
+	private int openAdmin = 0;
 	private int secondLine = 0;
 }
