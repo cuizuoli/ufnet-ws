@@ -142,7 +142,6 @@ public class UserService {
 		if (StringUtils.isBlank(userName)) {
 			userName = userId;
 		}
-		int communityId = teamId == 0 ? 1 : teamId;
 		String phone = request.getPhone();
 		//		String address = request.getAddress();
 		String limitDateEnd = request.getLimitDateEnd();
@@ -211,7 +210,9 @@ public class UserService {
 
 			// UserInfo
 			UserInfo userInfo = new UserInfo();
-			userInfo.setCommunityId(communityId);
+			if (teamId > 0) {
+				userInfo.setCommunityId(teamId);
+			}
 			userInfo.setAccountId(accountId);
 			userInfo.setUserName(userName);
 			userInfo.setLoginName(loginName);
@@ -468,7 +469,6 @@ public class UserService {
 			request.setPwd(SimpleConstants.DEFAULT_PASSWORD);
 		}
 		String userName = request.getUsername();
-		int communityId = teamId == 0 ? 1 : teamId;
 		String phone = request.getPhone();
 		//		String address = request.getAddress();
 		String limitDateEnd = request.getLimitDateEnd();
@@ -521,7 +521,9 @@ public class UserService {
 
 			// UserInfo
 			UserInfo userInfo = new UserInfo();
-			userInfo.setCommunityId(communityId);
+			if (teamId > 0) {
+				userInfo.setCommunityId(teamId);
+			}
 			userInfo.setUserName(userName);
 			userInfo.setLoginName(loginName);
 			userInfo.setPassword(password);
